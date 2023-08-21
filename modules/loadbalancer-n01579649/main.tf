@@ -5,6 +5,8 @@ resource "azurerm_public_ip" "n01579649-loadbalancer-pip" {
 
   name                       = "${var.n01579649-loadbalancer-name}-pip"
 
+  domain_name_label = var.n01579649-loadbalancer-name
+
   allocation_method          = var.allocation_method
   tags = var.tags
 }

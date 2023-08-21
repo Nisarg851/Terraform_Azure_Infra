@@ -65,7 +65,7 @@ output "n01579649-loadbalancer-name" {
 }
 
 output "n01579649-loadbalancer-fqdn" {
-    value = module.loadbalancer-n01579649.n01579649-loadbalancer-fqdn
+  value = module.loadbalancer-n01579649.n01579649-loadbalancer-fqdn
 }
 
 # Database
