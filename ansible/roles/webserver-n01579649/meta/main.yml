@@ -1,0 +1,11 @@
+galaxy_info:
+  author: n01579649_nisargkumar
+  description: Ansible role to partition and mount data disks
+  company: your company (optional)
+  license: MIT
+
+  min_ansible_version: 2.10
+
+  galaxy_tags: []
+
+dependencies: []

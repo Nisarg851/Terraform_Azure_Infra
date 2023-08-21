@@ -1,0 +1,4 @@
+---
+# vars file for profile-n01579649
+profile_comment: "# Test block of ansible user {{ ansible_user }}"
+tmout_value: 1500

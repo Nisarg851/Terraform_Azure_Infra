@@ -1,0 +1,6 @@
+---
+# vars file for webserver-n01579649
+apache_service: httpd  
+apache_service_state: started
+apache_service_enabled: yes
+web_files_dir: /var/www/html

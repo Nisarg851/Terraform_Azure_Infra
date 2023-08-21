@@ -42,3 +42,12 @@ resource "azurerm_lb_rule" "n01579649-loadbalancer-rules" {
   backend_port                   = var.n01579649-loadbalancer-rules.backend_port
   frontend_ip_configuration_name = "${var.n01579649-loadbalancer-name}-ipconfig"
 }
+
+resource "azurerm_lb_rule" "n01579649-loadbalancer-rules-2" {
+  loadbalancer_id                = azurerm_lb.n01579649-loadbalancer.id
+  name                           = "n01579649-loadbalancer-rules-2"
+  protocol                       = "Tcp"
+  frontend_port                  = "80"
+  backend_port                   = "80"
+  frontend_ip_configuration_name = "${var.n01579649-loadbalancer-name}-ipconfig"
+}

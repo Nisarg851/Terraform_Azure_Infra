@@ -1,0 +1,36 @@
+---
+# tasks file for webserver-n01579649
+- name: Install and configure Apache web server
+  yum:
+    name: "{{ apache_service }}"
+    state: present
+  become: yes
+  tags: webserver
+
+- name: Create files with FQDN
+  copy:
+    content: "{{ inventory_hostname }}"
+    dest: "{{ item }}"
+  loop:
+    - ~/vm.html
+  tags: webserver
+
+- name: Copy files to different paths on remote host
+  command: cp "{{ item }}" "{{ web_files_dir }}/index.html"
+  loop:
+    - ~/vm.html
+  tags: webserver
+  
+- name: Set permissions on files
+  file:
+    path: "{{ web_files_dir }}/index.html"
+    mode: '0444'
+  tags: webserver
+
+- name: Start Apache web server
+  service:
+    name: "{{ apache_service }}"
+    state: "{{ apache_service_state }}"
+    enabled: "{{ apache_service_enabled }}"
+  become: yes
+  tags: webserver

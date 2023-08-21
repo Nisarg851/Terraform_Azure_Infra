@@ -1,0 +1,11 @@
+---
+# tasks file for profile-n01579649
+- name: Append lines to /etc/profile
+  become: yes
+  blockinfile:
+    path: /etc/profile
+    block: |
+      {{ profile_comment }}
+      export TMOUT={{ tmout_value }}
+  tags:
+    - profile-n01579649

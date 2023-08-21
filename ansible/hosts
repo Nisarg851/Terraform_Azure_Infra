@@ -1,0 +1,24 @@
+[linux]
+n01579649-linux1.centralindia.cloudapp.azure.com
+n01579649-linux2.centralindia.cloudapp.azure.com
+n01579649-linux3.centralindia.cloudapp.azure.com
+
+[windows]
+n9649-win1.centralindia.cloudapp.azure.com
+
+[os:children]
+linux
+windows
+
+[linux:vars]
+ansible_user=user100
+ansible_ssh_private_key_file="/mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/lab02s3/vm_ssh_key/id_rsa"
+ansible_ssh_common_args='-o StrictHostKeyChecking=False'
+
+[windows:vars]
+ansible_user=n01579649-nisarg
+ansible_password="/mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/lab02s3/vm_ssh_key/id_rsa"
+ansible_connection=winrm
+ansible_port=5985
+ansible_winrm_transport=ntlm
+ansible_winrm_server_cert_validation=ignore

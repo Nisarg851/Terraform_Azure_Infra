@@ -1,10 +1,10 @@
 # Common Local block for all modules
 locals {
   assignment01_tags = {
-    Assignment = "CCGC 5502 Automation Assignment"
-    Name = "Nisargkumar.Mahyavanshi"
+    Assignment     = "CCGC 5502 Automation Assignment"
+    Name           = "Nisargkumar.Mahyavanshi"
     ExpirationDate = "2024-12-31"
-    Environment = "Learning"
+    Environment    = "Learning"
   }
 }
 
@@ -91,11 +91,13 @@ module "vmlinux-n01579649" {
     storage_account_uri = module.common-n01579649.storage_account-primary_blob_endpoint
 
     admin_ssh_key = {
-      admin_username = "n01579649-nisargkumar"
-      public_key     = "C:\\Users\\Nisarg Mahyavanshi\\automation\\terraform\\lab02s3\\vm_ssh_key\\id_rsa.pub"
+      admin_username = "user100"
+      public_key     = "/mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/lab02s3/vm_ssh_key/id_rsa.pub"
+      #  "C:\\Users\\Nisarg Mahyavanshi\\automation\\terraform\\lab02s3\\vm_ssh_key\\id_rsa.pub"
     }
 
-    private_key = "C:\\Users\\Nisarg Mahyavanshi\\automation\\terraform\\lab02s3\\vm_ssh_key\\id_rsa"
+    # private_key = "C:\\Users\\Nisarg Mahyavanshi\\automation\\terraform\\lab02s3\\vm_ssh_key\\id_rsa"
+    private_key = "/mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/lab02s3/vm_ssh_key/id_rsa.pub"
 
     os_disk = {
       storage_account_type = "Standard_LRS"
@@ -168,11 +170,12 @@ module "vmwindows-n01579649" {
   instance_count = 1
 
   n01579649-vmwindows-info = {
-    name          = "n9649-win"
-    computer_name = "n01579649"
-    size          = "Standard_B1s"
-    admin_username = "n01579649-nisarg"
-    admin_password = "C:\\Users\\Nisarg Mahyavanshi\\automation\\terraform\\lab02s3\\vm_ssh_key\\id_rsa"
+    name           = "n9649-win"
+    computer_name  = "n01579649"
+    size           = "Standard_B1s"
+    admin_username = "user100"
+    admin_password = "/mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/lab02s3/vm_ssh_key/id_rsa.pub"
+    # admin_password = "C:\\Users\\Nisarg Mahyavanshi\\automation\\terraform\\lab02s3\\vm_ssh_key\\id_rsa"
 
     winrm_listener_protocol = "Http"
 
@@ -234,30 +237,30 @@ module "datadisk-n01579649" {
 
   n01579649-vmlinux-datadisk-info = {
     n01579649-vmlinux-names = module.vmlinux-n01579649.n01579649-vmlinux.hostnames
-    total-vms = 3
-    storage_account_type = "Standard_LRS"
-    create_option = "Empty"
-    disk_size_gb = 10
+    total-vms               = 3
+    storage_account_type    = "Standard_LRS"
+    create_option           = "Empty"
+    disk_size_gb            = 10
   }
 
   n01579649-vmlinux-datadisk-attachment-info = {
     virtual_machine_ids = module.vmlinux-n01579649.n01579649-vmlinux.ids
-    lun = "0"
-    caching = "ReadWrite"
+    lun                 = "0"
+    caching             = "ReadWrite"
   }
 
   n01579649-vmwindows-datadisk-info = {
     n01579649-vmwindows-names = module.vmwindows-n01579649.n01579649-vmwindows.hostnames
-    total-vms = 1
-    storage_account_type = "Standard_LRS"
-    create_option = "Empty"
-    disk_size_gb = 10
+    total-vms                 = 1
+    storage_account_type      = "Standard_LRS"
+    create_option             = "Empty"
+    disk_size_gb              = 10
   }
 
   n01579649-vmwindows-datadisk-attachment-info = {
     virtual_machine_ids = module.vmwindows-n01579649.n01579649-vmwindows.ids
-    lun = "0"
-    caching = "ReadWrite"
+    lun                 = "0"
+    caching             = "ReadWrite"
   }
 }
 
@@ -272,17 +275,17 @@ module "loadbalancer-n01579649" {
     location = module.rgroup-n01579649.rg-n01579649-info.location
   }
 
-  n01579649-loadbalancer-name = "n01579649-loadbalancer" 
-  allocation_method = "Dynamic"
+  n01579649-loadbalancer-name = "n01579649-loadbalancer"
+  allocation_method           = "Dynamic"
 
   n01579649-loadbalancer-nic-backend_pool_association-info = {
-    count = 3
+    count     = 3
     hostnames = module.vmlinux-n01579649.n01579649-vmlinux.hostnames
-    nic_ids = module.vmlinux-n01579649.nic_id
+    nic_ids   = module.vmlinux-n01579649.nic_id
   }
 
   n01579649-loadbalancer-rules = {
-    name = "n01579649-loadbalancer-rules"
+    name                           = "n01579649-loadbalancer-rules"
     protocol                       = "Tcp"
     frontend_port                  = "22"
     backend_port                   = "22"
@@ -314,8 +317,8 @@ module "database-n01579649" {
   }
 
   n01579649-database-info = {
-    name = "n01579649-database"
-    charset             = "UTF8"
-    collation           = "English_United States.1252"
+    name      = "n01579649-database"
+    charset   = "UTF8"
+    collation = "English_United States.1252"
   }
 }

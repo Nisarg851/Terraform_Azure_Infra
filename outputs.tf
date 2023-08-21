@@ -44,24 +44,28 @@ output "n01579649-vmlinux-public-ip" {
 
 # Virtual Machine: Windows resources
 output "n01579649-vmwindows-hostname" {
-    value = module.vmwindows-n01579649.n01579649-vmwindows
+  value = module.vmwindows-n01579649.n01579649-vmwindows
 }
 
 output "n01579649-vmwindows-FQDN" {
-    value = module.vmwindows-n01579649.n01579649-vmwindows-FQDN
+  value = module.vmwindows-n01579649.n01579649-vmwindows-FQDN
 }
 
 output "n01579649-vmwindows-private-ip" {
-    value = module.vmwindows-n01579649.n01579649-vmwindows-private-ip
+  value = module.vmwindows-n01579649.n01579649-vmwindows-private-ip
 }
 
 output "n01579649-vmwindows-public-ip" {
-    value = module.vmwindows-n01579649.n01579649-vmwindows-public-ip
+  value = module.vmwindows-n01579649.n01579649-vmwindows-public-ip
 }
 
 # loadbalancer
 output "n01579649-loadbalancer-name" {
-    value = module.loadbalancer-n01579649.n01579649-loadbalancer-name
+  value = module.loadbalancer-n01579649.n01579649-loadbalancer-name
+}
+
+output "n01579649-loadbalancer-fqdn" {
+    value = module.loadbalancer-n01579649.n01579649-loadbalancer-fqdn
 }
 
 # Database

@@ -55,10 +55,10 @@ resource "azurerm_network_interface" "n01579649-nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "n01579649-vmlinux" {
-    resource_group_name   = var.rg-info.name
-    location              = var.rg-info.location
+  resource_group_name   = var.rg-info.name
+  location              = var.rg-info.location
 
-    for_each              = local.instances
+  for_each              = local.instances
 
   name                  = "${var.n01579649-vmlinux-info.name}-${each.key}"
 

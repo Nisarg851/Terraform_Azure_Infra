@@ -1,0 +1,34 @@
+---
+# tasks file for user-n01579649
+- name: Add group cloudadmins
+  group:
+    name: "{{ cloudadmins_group }}"
+    state: present
+
+- name: Add user accounts
+  user:
+    name: "{{ item.name }}"
+    state: present
+  loop: "{{ users }}"
+
+- name: Add users to groups
+  user:
+    name: "{{ item.name }}"
+    groups: "cloudadmins,wheel"
+  loop: "{{ users }}"
+
+- name: Generate SSH keys for users
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: "/mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/lab02s3/vm_ssh_key/id_rsa"
+    ssh_key_comment: "{{ item.ssh_key_comment }}"
+  loop: "{{ users }}"
+
+- name: Distribute SSH keys for users
+  ansible.builtin.authorized_key:
+    user: "{{ item.name }}"
+    state: present
+    key: "{{ lookup('file', '/mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/lab02s3/vm_ssh_key/id_rsa.pub') }}"
+  loop: "{{ users }}"

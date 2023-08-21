@@ -1,0 +1,11 @@
+---
+- name: Playbook for Package Management and Patching
+  hosts: linux
+  become: true
+  
+  roles:
+    # - role: /mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/assignment1-n01579649/ansible/roles/datadisk-n01579649
+    - role: /mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/assignment1-n01579649/ansible/roles/profile-n01579649
+    # - role: /mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/assignment1-n01579649/ansible/roles/user-n01579649
+    - role: /mnt/c/Users/Nisarg Mahyavanshi/automation/terraform/assignment1-n01579649/ansible/roles/webserver-n01579649
+

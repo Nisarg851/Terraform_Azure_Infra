@@ -1,0 +1,7 @@
+---
+# vars file for user-n01579649
+cloudadmins_group: cloudadmins
+users:
+  - { name: user100, ssh_key_comment: "User 100 SSH Key" }
+  - { name: user200, ssh_key_comment: "User 200 SSH Key" }
+  - { name: user300, ssh_key_comment: "User 300 SSH Key" }
