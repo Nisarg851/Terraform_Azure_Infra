@@ -84,8 +84,6 @@ flowchart TD
     Ansible --- L1 & L2 & L3 & W1
 ```
 
-> **Note:** To view the diagram properly, use a Markdown editor or viewer that supports Mermaid diagrams (e.g., VS Code with Mermaid Preview).
-
 ## Repository Structure
 
 ```plaintext
